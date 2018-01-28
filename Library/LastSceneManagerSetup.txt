@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/GettingInCastle.unity
+- path: Assets/Scenes/ShroudTest.unity
   isLoaded: 1
   isActive: 1

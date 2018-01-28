@@ -10,7 +10,9 @@ public class CameraMovement : MonoBehaviour {
     public bool Transition;
     // Use this for initialization
     void Start () {
-        
+        man = GameObject.FindGameObjectWithTag("Man").transform;
+        wave = GameObject.FindGameObjectWithTag("Wave").transform;
+        Transition = true;
     }
 
     // Update is called once per frame
@@ -24,9 +26,16 @@ public class CameraMovement : MonoBehaviour {
              { 
                 Transition = false;
              }
-            if (Transition)
+        TransitionCamera();
+
+    }
+
+
+    public void TransitionCamera()
+    {
+        if (Transition)
         {
-            man = GameObject.FindGameObjectWithTag("Man").transform;
+
             Vector3 manpos = man.position;
             manpos.z = transform.position.z;
             transform.position = manpos;
@@ -36,7 +45,6 @@ public class CameraMovement : MonoBehaviour {
         {
             try
             {
-                wave = GameObject.FindGameObjectWithTag("Wave").transform;
                 Vector3 wavepos = wave.position;
                 wavepos.z = transform.position.z;
                 transform.position = wavepos;
@@ -44,11 +52,5 @@ public class CameraMovement : MonoBehaviour {
             catch (Exception ex) { }
 
         }
-    }
-
-
-    public void TransitionCamera(GameObject g)
-    {
-        transform.position = g.transform.position;
     }
 }
